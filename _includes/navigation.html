@@ -1,0 +1,11 @@
+<nav class="main-nav">
+    {% if page.url != "/" %}
+    <a href="{{ site.baseurl }}"> <span class="arrow">←</span> Home </a>
+    {% endif %} {% if site.aboutPage %}
+    <a href="{{ site.baseurl }}about">About </a> {% endif %}
+    <a class="github" href="https://github.com/{{ site.github_username }}" target="_blank">Projects</a>
+    {% if site.authorTwitter != "" %}
+    <a href="https://twitter.com/{{ site.authorTwitter }}" target="_blank">Twitter</a>
+    {% endif %}
+    <a class="cta" href="{{ site.baseurl }}feed.xml">Subscribe</a>
+</nav>

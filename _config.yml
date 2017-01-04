@@ -1,0 +1,44 @@
+name: Rust Vietnam 
+description: The sound of Rust 
+meta_description: "[Rust is] Technology from the past come to save the future from itself - Graydon"
+
+aboutPage: false 
+
+markdown: kramdown
+highlighter: rouge
+
+gems: [jekyll-paginate]
+paginate: 20
+baseurl: /
+domain_name: 'https://blog.rust-lang.vn'
+google_analytics: 'UA-89129994-1'
+disqus: true 
+disqus_shortname: 'https-blog-rust-lang-vn'
+github_username: 'rust-vietnam'
+
+# Details for the RSS feed generator
+url:            'https://blog.rust-lang.vn'
+author:         'Rust Vietnam'
+authorTwitter:  ''
+
+permalink:       /:year/:title/
+
+defaults:
+    -
+        scope:
+            path: "" # empty string for all files
+            type: pages
+        values:
+            layout: default
+    -
+        scope:
+            path: "" # empty string for all files
+            type: posts
+        values:
+            layout: post
+    -
+        scope:
+            path: ""
+            type: drafts
+        values:
+            layout: post

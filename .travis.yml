@@ -1,0 +1,37 @@
+language: ruby
+rvm:
+- 2.1
+  
+# Containers are cool!  
+sudo: false
+
+install: 
+- bundle install
+- pip install --user awscli
+- ~/.local/bin/aws configure set preview.cloudfront true
+  
+# Build and deploy the site to the S3 bucket on push to master, unless PR
+script: bundle exec jekyll build
+branches:
+  only:
+  - master
+deploy:
+  provider: s3
+  access_key_id: AKIAJM7SALYNYH6KEAJQ
+  secret_access_key:
+    secure: "Gjia9xtHiAq20l7NNi5G5zLSicsxUanYxQTw1+uY/teoHDOYvPz4exj3X49ekPnMikuHO+iAaEtA2vKiXDSTP4mZF9GrIe8hHEUKjSdQtti3UVK+DIbDkTQPSrqhgJsOIV1rxp5ThtAjBUdvVjYek/rxDLx4+JDVT9eBz/+1U8NZ6QnOYfEkGpjkqEeBMkezj8GLl27AZr1Jk9YziQiuFkiTIwtFUA1mA3FxzUJCmXoE75LPtcJWTd/wTqLS3yDunRC14KDejIorngqh49FqgZH0EKYJfbZb7Opw5rXzLYpfzfyTCzJjmCs4uRFDAX+/OAady3sc78wADBaCh3I6tPWPVNbu/0bEDbs/fbWGRaZuN6IiONWjrLIXM++sFrYLYP2+TIgd9+feeMUHcWJ2bNSWSaNcuOVgMFttGl1iGYsYyVm+rbq0iN5lzO022IsmE6zifUS2SLWVgbaTOopA5Osdy/8sJFVO6kgh2cMA1fzaR3su6MWYCMymC4OB/JiNdo8gEFj8CJB2j+htj4bWJn32Orkm9vu5Cc5wvPkrUjGhC+WDymdBCve/fTV0UhrD/lDUoT8DsSewu8efiyN8oqdjBhTJWcG1dI2P/ICZh2GMGS1I9cPt32H7ESmcoOhdS1oN0jr/sc29uuQzptfS8VLpcotzOTk8GUMEWjzOEK4="
+  bucket: blog-rust-lang-vn
+  acl: public_read
+  skip_cleanup: true
+  local_dir: _site
+  region: us-east-1
+  on:
+    branch: master
+    condition: $TRAVIS_PULL_REQUEST = "false"
+
+after_success: 
+- '[[ $TRAVIS_PULL_REQUEST == "false" ]] && python invalidation-list.py'
+
+after_deploy:
+- '[[ $TRAVIS_PULL_REQUEST == "false" ]] && ~/.local/bin/aws cloudfront create-invalidation
+  --invalidation-batch file://payload.json --distribution-id EZBISR7B1UL7J'
