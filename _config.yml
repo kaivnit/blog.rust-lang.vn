@@ -21,7 +21,7 @@ url:            'https://blog.rust-lang.vn'
 author:         'Rust Vietnam'
 authorTwitter:  ''
 
-permalink:       /:year/:title/
+permalink:      /:year/:month/:day/:title.html 
 
 defaults:
     -
