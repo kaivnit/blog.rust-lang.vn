@@ -8,7 +8,6 @@ sudo: false
 install: 
 - bundle install
 - pip install --user awscli
-- ~/.local/bin/aws configure set preview.cloudfront true
   
 # Build and deploy the site to the S3 bucket on push to master, unless PR
 script: bundle exec jekyll build
@@ -28,10 +27,3 @@ deploy:
   on:
     branch: master
     condition: $TRAVIS_PULL_REQUEST = "false"
-
-after_success: 
-- '[[ $TRAVIS_PULL_REQUEST == "false" ]] && python invalidation-list.py'
-
-after_deploy:
-- '[[ $TRAVIS_PULL_REQUEST == "false" ]] && ~/.local/bin/aws cloudfront create-invalidation
-  --invalidation-batch file://payload.json --distribution-id EZBISR7B1UL7J'
