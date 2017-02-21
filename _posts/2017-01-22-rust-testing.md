@@ -8,7 +8,7 @@ description: "Testing là một chức năng quan trọng mà bất kì ngôn ng
 
 **Chống chỉ định:** cái tiêu đề đặt nữa tây nữa việt là cố ý, để câu view, chứ thực ra không phải tại mình không biết dịch chữ `idiomatic` ra đâu :v À nhân tiện nói luôn, `idiomatic way` có nghĩa là `một cách chính thống`, ở đây bàn về cách viết test được cộng đồng Rustlang công nhận và khuyến khích.
 
-![](img/rustlang-vietnam-comic.png)
+![](https://huytd.github.io/posts/img/rustlang-vietnam-comic.png)
 
 Testing là một chức năng quan trọng mà bất kì ngôn ngữ nào cũng cần phải có, viết unit test cũng là một việc mà bất kì lập trình viên nào cũng cần phải làm, thậm chí với một vài cộng đồng như Golang và Ruby thì người ta bảo thủ tới mức xem việc publish một project không có unit test giống như là một cái tội luôn vậy đó :)) 
 
@@ -167,4 +167,4 @@ Có thể thấy trong output chia làm 3 phần, phần đầu tiên là kết 
 
 Một phút dành cho quảng cáo: Cộng đồng Rustlang Việt Nam đã được thành lập, các bạn có thể tham gia tại các địa chỉ sau:
 
-![](img/rustlang-vietnam-social.png)
+![](https://huytd.github.io/posts/img/rustlang-vietnam-social.png)
